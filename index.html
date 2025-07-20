@@ -2,51 +2,80 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Emoji con Labios</title>
+  <title>Emoji Dress-Up</title>
+
+  <!-- ----------  CSS ---------- -->
   <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      margin-top: 50px;
+    body{
+      font-family: Arial, sans-serif;
+      background:#fff0f5;
+      text-align:center;
+      padding-top:60px;
     }
-    #emoji {
-      width: 200px;
-      position: relative;
+    #stage{
+      position:relative;
+      display:inline-block;
     }
-    .labios {
-      width: 80px;
-      position: absolute;
-      top: 110px;
-      left: 60px;
+    #cara{
+      width:200px;
     }
-    .botones {
-      margin-top: 30px;
+    #labio{
+      position:absolute;
+      top:60%;         /* ajusta si hace falta */
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:80px;      /* ancho del labio */
+      pointer-events:none;
     }
-    button {
-      margin: 0 10px;
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
+    .btn{
+      margin:8px;
+      padding:10px 18px;
+      font-size:16px;
+      border:none;
+      border-radius:8px;
+      background:#ff69b4;
+      color:white;
+      cursor:pointer;
+    }
+    .btn:hover{
+      background:#ff1493;
     }
   </style>
 </head>
+
 <body>
-  <div style="position: relative; display: inline-block;">
-    <img id="cara" src="https://raw.githubusercontent.com/wiwiwi307/emoji-labios/main/emoji-sin-labios.png" alt="Emoji base" />
-    <img id="labio" class="labios" src="https://raw.githubusercontent.com/wiwiwi307/emoji-labios/main/labio1.png" alt="Labio" />
+
+  <h1>💄 Emoji Dress Up</h1>
+
+  <!-- Contenedor del emoji -->
+  <div id="stage">
+    <!-- Emoji base SIN labios -->
+    <img id="cara"
+         src="https://raw.githubusercontent.com/wiwiwi307/emoji-labios/main/emoji_base.png"  <!-- ← AQUÍ -->
+         alt="emoji base">
+
+    <!-- Labio por defecto -->
+    <img id="labio"
+         src="https://raw.githubusercontent.com/wiwiwi307/emoji-labios/main/labio1.png"       <!-- ← AQUÍ -->
+         alt="labio">
   </div>
 
-  <div class="botones">
-    <button onclick="cambiarLabio(1)">💄 1</button>
-    <button onclick="cambiarLabio(2)">💄 2</button>
-    <button onclick="cambiarLabio(3)">💄 3</button>
+  <!-- Botones -->
+  <div style="margin-top:25px">
+    <button class="btn" onclick="cambiar('labio1.png')">Labio 1</button>
+    <button class="btn" onclick="cambiar('labio2.png')">Labio 2</button>
+    <button class="btn" onclick="cambiar('labio3.png')">Labio 3</button>
   </div>
 
+  <!-- ----------  JS ---------- -->
   <script>
-    function cambiarLabio(num) {
-      const labio = document.getElementById("labio");
-      labio.src = `https://raw.githubusercontent.com/wiwiwi307/emoji-labios/main/labio${num}.png`;
+    // prefijo RAW de tu repo (cámbialo si tu usuario o repo cambian)
+    const BASE_URL = 'https://raw.githubusercontent.com/wiwiwi307/emoji-labios/main/'; // ← AQUÍ
+
+    function cambiar(nombre){
+      document.getElementById('labio').src = BASE_URL + nombre;
     }
   </script>
+
 </body>
-</html>
+</html>q
